@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <label><textarea id="txt-area" cols="60" rows="30" placeholder="Image Alts:
+One by one with missing 1 line, but without any spaces. 
+For ex:
+1 Grown Up Bedroom with Pink Bed
+
+2 Bedroom with Pinks Walls and Bright Accents
+
+3 Chick Pink and Gray Designer Bedroom
+
+4 Simple Salmon Pink Bedroom Design
+
+5 Blush Pink Bedroom Idea
+..."></textarea></label>
+    <button id="btn" class="do_alts_btn">Do Image Names</button>
+    <br>
+    <script>
+        document.getElementById("btn").onclick = function() {
+                var text = document.getElementById("txt-area").value.split("\n");
+                for (let x = 0; x < text.length; x++) {
+                    document.body.innerHTML += `<br>`
+                    document.body.innerText += `${text[x].toLowerCase().replace(/\./g, "").replace(/'/g, "").replace(/’/g, "").replace(/,/g, "").replace(/!/g, "").replace(/`/g, "").replace(/  /g, " ").split(" ").join("-")}`;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

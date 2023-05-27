@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Image SRC with Sizes</title>
+</head>
+
+<body>
+    Below is the textarea element that will take in the contents of your text file:<br />
+    <textarea id="txtarea" placeholder="Image SRC:" cols="100" rows="20"></textarea>
+    <button id="btn">Do Image SRC with Sizes</button><br/><br/><br/>
+    <script>
+        //When the button (id of "btn") is pressed,
+        document.getElementById("btn").onclick = function() {
+
+
+            var listOfLinks = document.getElementById("txtarea").value.split("\n");
+
+
+            const getSortedImgData = (list, callback) => {
+                const arr = [];
+                let count = 0;
+                listOfLinks.forEach((url, i) => {
+
+                    var img = new Image();
+                    img.src = url;
+                    img.onload = () => {
+                        count++;
+                        const data = `src="${img.src}" width="${img.width}" height="${img.height}" <br/><br/>`;
+
+                        console.log(i, data);
+                        arr.push({
+                            data,
+                            index: i
+                        })
+                        if (count === listOfLinks.length) {
+                            const res = arr.sort((a, b) => {
+                                return a.index - b.index;
+                            });
+                            callback(res);
+                        }
+                    }
+                });
+            }
+
+            getSortedImgData(listOfLinks, (list) => {
+                list.forEach(({
+                    data
+                }) => {
+                    document.body.innerHTML += `${data}`
+                })
+            })
+
+        };
+    </script>
+</body>
+
+</html>

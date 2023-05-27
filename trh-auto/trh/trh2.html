@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TRH-slider</title>
+</head>
+
+<body>
+    <label><textarea id="txt-area" cols="100" rows="30" placeholder='Text: Here you can do slider with prepared code:
+        
+<h3>#1: Long Bob with Deep Side Parting</h3>
+<p style="text-align: left;">A long bob is all about femininity and elegance and looks great with either middle or side parting.</p>
+[caption align="aligncenter" width="500"]<img src="https://therighthairstyles.com/wp-content/uploads/2021/12/1-deep-side-part-hairstyle-for-diamond-faces.jpg" title="Long Bob with Deep Side Parting" alt="Deep Side Part Hairstyle for Diamond Faces" width="500" height="568" /> Instagram / <a href="https://www.instagram.com/p/CGluPTEDCvw/" target="_blank" rel="nofollow">@hairhecker</a>[/caption]
+
+<h3>#2: Long Bob with Deep Side Parting</h3>
+<p style="text-align: left;">A long bob is all about femininity and elegance and looks great with either middle or side parting.</p>
+[caption align="aligncenter" width="500"]<img src="https://therighthairstyles.com/wp-content/uploads/2021/12/1-deep-side-part-hairstyle-for-diamond-faces.jpg" title="Long Bob with Deep Side Parting" alt="Deep Side Part Hairstyle for Diamond Faces" width="500" height="568" /> Instagram / <a href="https://www.instagram.com/p/CGluPTEDCvw/" target="_blank" rel="nofollow">@hairhecker</a>[/caption]
+.....'></textarea></label>
+    <button id="btn" class="do_alts_btn">Do Code</button>
+    <br>
+    <script>
+        document.getElementById("btn").onclick = function() {
+            var text = document.getElementById("txt-area").value.split("\n");
+            var arrayLength = text.length;
+
+            function chunkArray(myArray, chunk_size) {
+                var index = 0;
+                var tempArray = [];
+
+                for (index = 0; index < arrayLength; index += 4) {
+                    myChunk = myArray.slice(index, index + 4);
+                    tempArray.push(myChunk);
+                }
+                return tempArray;
+            }
+            for (let i = 0; i < arrayLength; i = i + 4) {
+                document.body.innerText += `${text[i]}
+                                            ${text[i+2]}
+                                            ${text[i+1]}
+                                            <!--nextpage-->
+                                            ${text[i+3]}`
+                document.body.innerHTML += `<br>`
+            }
+        }
+    </script>
+</body>
+
+</html>

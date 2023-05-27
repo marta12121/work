@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Rock a Billy Hairstyle</title>
+</head>
+
+<body>
+    <a href="alts.html" target="_blank" class="do_alts_btn">Do Image Names</a><br><br>
+    <label><textarea id="data-area" cols="15" rows="4" placeholder="Data: year/month.
+For ex: 
+        2023/05"></textarea></label><br>
+    <label><textarea id="txt-area" cols="100" rows="15" placeholder="Text: the first line Highlighted 'title', and from the new line the main text. One by one without missing lines or spaces.
+
+For ex: 
+        1. Rose Pink Bed Frame.
+        The pink upholstery of your bed sets the tone for the entire bedroom...
+        2. Pink Bedroom with Mustard Accents.
+        A smart mix of patterns, textures and colors give this pink space a boho bedroom vibe...
+        ...."></textarea></label>
+    <label><textarea id="source-area" cols="50" rows="15" placeholder="Links: the first line link and and from the new line account's name. One by one without missing lines or spaces.
+        
+For ex:
+        1. https://www.instagram.com/p/CZrBl8kNld6/
+        delightfulll
+        2. https://www.instagram.com/p/CapfH_aAFHG/
+        annelismitham
+        ...."></textarea></label>
+    <label><textarea id="img-area" cols="60" rows="15" placeholder="Image Names: image name with '-'. One by one with missing 1 line, but without any spaces.
+        
+For ex:
+        1-grown-up-bedroom-with-pink-bed
+                
+        2-bedroom-with-pinks-walls-and-bright-accents
+        ...."></textarea></label>
+    <label><textarea id="alts-area" cols="60" rows="15" placeholder="Image Alts: one by one with missing 1 line, but without any spaces.
+
+For ex:
+        1. Grown Up Bedroom with Pink Bed
+                
+        2. Bedroom with Pinks Walls and Bright Accents
+        ..."></textarea></label>
+    <button id="btn" class="do_alts_btn">Full Code</button>
+    <br>
+    <script>
+        document.getElementById("btn").onclick = function() {
+            var text = document.getElementById("txt-area").value.split("\n");
+            var source = document.getElementById("source-area").value.split("\n");
+            var image = document.getElementById("img-area").value.split("\n");
+            var alts = document.getElementById("alts-area").value.split("\n");
+            var data = document.getElementById("data-area").value.split("\n");
+            var arrayLength = text.length;
+            var arrayLength1 = source.length;
+
+            function chunkArray(myArray, chunk_size) {
+                var index = 0;
+                var tempArray = [];
+
+                for (index = 0; index < arrayLength; index += 2) {
+                    myChunk = myArray.slice(index, index + 2);
+                    tempArray.push(myChunk);
+                }
+                return tempArray;
+            }
+
+            function chunkArray1(myArray1, chunk_size) {
+                var index1 = 0;
+                var tempArray1 = [];
+
+                for (index1 = 0; index1 < arrayLength1; index1 += 2) {
+                    myChunk1 = myArray1.slice(index1, index1 + 2);
+                    tempArray1.push(myChunk1);
+                }
+                return tempArray1;
+            }
+            for (let i = 0; i < (arrayLength + arrayLength1) / 2; i = i + 2) {
+                title = `<h3><span style="font-weight: 400;">${text[i]}</span></h3>`;
+                textt = `<p style="text-align: left;"><span style="font-weight: 400;">${text[i+1]}</span></p>`;
+
+                if (i < 17) {
+                    img = `<img src="https://www.rockabillyhairstyle.com/wp-content/uploads/${data[0]}/${image[i]}.jpg" alt="${alts[i].replace(/[0-9]/, "").replace(/\./g, "").replace(/ /, "")}" width="500" />
+                           <p style="font-size: 14px;">via <a href="${source[i].replace(/[0-9]/, "").replace(/\./, "").replace(/ /, "")}" target="_blank" rel="nofollow">@${source[i+1]}</a></p>`
+                } else if (i >= 18) {
+                    img = `<img src="https://www.rockabillyhairstyle.com/wp-content/uploads/${data[0]}/${image[i]}.jpg" alt="${alts[i].replace(/[0-9]/, "").replace(/\./g, "").replace(/[0-9]/, "").replace(/ /, "")}" width="500" />
+                           <p style="font-size: 14px;">via <a href="${source[i].replace(/[0-9]/, "").replace(/\./, "").replace(/[0-9]/, "").replace(/ /, "")}" target="_blank" rel="nofollow">@${source[i+1]}</a></p>`;
+                }
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += title;
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += textt;
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += img;
+                document.body.innerHTML += `<br>`;
+
+            }
+            // for (let i = 0; i < (arrayLength + arrayLength1) / 2; i = i + 2) {
+            //     document.body.innerHTML += `<br>`
+            //     document.body.innerText += `<h2><span style="font-weight: 400;">${text[i]}</span></h2>
+            //                             <p style="text-align: left;"><span style="font-weight: 400;">${text[i+1]}</span></p>
+            //                             <img src="https://www.hairstylery.com/wp-content/uploads/images/${image[i]}.jpg" alt="${alts[i]}" width="500" />
+            //                             <p style="font-size: 14px;">via <a href="${source[i]}" target="_blank" rel="nofollow">@${source[i+1]}</a></p>`
+            //     document.body.innerHTML += `<br>`
+            // }
+        }
+    </script>
+</body>
+
+</html>

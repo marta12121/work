@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Rock a Billy Hairstyle</title>
+</head>
+
+<body>
+    <a href="alts.html" target="_blank" class="do_alts_btn">Do Image Names</a><br><br>
+    <label><textarea id="data-area" cols="15" rows="4" placeholder="Data: year/month.
+        For ex: 
+                2023/05"></textarea></label><br>
+    <label><textarea id="txt-area" cols="100" rows="15" placeholder="Text: the first line for header,from the new line the main text. One by one without missing lines or spaces. If there are 1 paragraphs, miss one line for second one. After each blocks miss 1 lines. 
+
+For ex: 1. Classic Light to Dark Hair Color Transition for All Ladies
+        It is considered the most classic option, allowing you to get a unique hairstyle.... 
+        Making dark gray ombre is quite easy for experienced hair technicians.....
+        2. Perfect Ombre Hair Color for Blondes
+        Blondes should just add dark color without the need....
+        <<miss one line for paragraph>>
+        3. ...."></textarea></label>
+    <label><textarea id="source-area" cols="50" rows="15" placeholder="Links: the first line link and and from the new line account's name. One by one without missing lines or spaces. 
+
+For ex:
+        1. https://www.instagram.com/p/CZrBl8kNld6/
+        delightfulll
+        <<1 missing line>>
+        2. https://www.instagram.com/p/CapfH_aAFHG/
+        annelismitham
+        <<1 missing line>>
+        3. https://www.instagram.com/p/CZu8BnxPG6C/
+        hairhecker
+        <<1 missing line>>
+        ...."></textarea></label>
+    <label><textarea id="img-area" cols="60" rows="15" placeholder="Image Names: image name with '-'. One by one with missing 2 lines between each blocks of 2 names, without any spaces.
+
+For ex: 1-bob-haircut-with-gray-and-blue-ombre-color-blend
+        <<1 missing line>>
+        <<2 missing line>>
+        2-wavy-mid-length-hair-with-blue-ends
+        <<1 missing line>>
+        <<2 missing line>>
+        ...."></textarea></label>
+    <label><textarea id="alts-area" cols="60" rows="15" placeholder="Image Alts: one by one with missing 2 lines between each blocks of 2 alts, without any spaces.
+
+For ex: 1. Bob Haircut with Gray and Blue Ombre Color Blend
+        <<1 missing line>>
+        <<2 missing line>>
+        2. Wavy Mid-length Hair with Blue Ends
+        <<1 missing line>>
+        <<2 missing line>>
+       ....."></textarea></label>
+    <button id="btn" class="do_alts_btn">Full Code</button>
+    <br>
+    <script>
+        document.getElementById("btn").onclick = function() {
+            var text = document.getElementById("txt-area").value.split("\n");
+            var source = document.getElementById("source-area").value.split("\n");
+            var image = document.getElementById("img-area").value.split("\n");
+            var alts = document.getElementById("alts-area").value.split("\n");
+            var data = document.getElementById("data-area").value.split("\n");
+            var arrayLength = text.length;
+            var arrayLength1 = source.length;
+            var arrayLength2 = alts.length;
+
+            function chunkArray(myArray, chunk_size) {
+                var index = 0;
+                var tempArray = [];
+
+                for (index = 0; index < arrayLength; index += 4) {
+                    myChunk = myArray.slice(index, index + 4);
+                    tempArray.push(myChunk);
+                }
+                return tempArray;
+            }
+
+            function chunkArray1(myArray1, chunk_size) {
+                var index1 = 0;
+                var tempArray1 = [];
+
+                for (index1 = 0; index1 < arrayLength1; index1 += 8) {
+                    myChunk1 = myArray1.slice(index1, index1 + 8);
+                    tempArray1.push(myChunk1);
+                }
+                return tempArray1;
+            }
+
+            function chunkArray1(myArray2, chunk_size) {
+                var index1 = 0;
+                var tempArray1 = [];
+
+                for (index2 = 0; index2 < arrayLength2; index2 += 4) {
+                    myChunk3 = myArray2.slice(index2, index2 + 4);
+                    tempArray2.push(myChunk2);
+                }
+                return tempArray2;
+            }
+
+            for (let i = 0; i < (arrayLength + arrayLength1) / 2; i = i + 3) {
+                title = `<h3><span style="font-weight: 400;">${text[i]}</span></h3>`;
+                p1_text = `<p style="text-align: left;"><span style="font-weight: 400;">${text[i+1]}</span></p>`;
+                p2_text = `<p style="text-align: left;"><span style="font-weight: 400;">${text[i+2]}</span></p>`;
+                if (i < 17) {
+                    img = `<img src="https://www.rockabillyhairstyle.com/wp-content/uploads/${data[0]}/${image[i]}.jpg" alt="${alts[i].replace(/[0-9]/, "").replace(/\./g, "").replace(/ /, "")}" width="500" />
+                           <p style="font-size: 14px;">via <a href="${source[i].replace(/[0-9]/, "").replace(/\./, "").replace(/ /, "")}" target="_blank" rel="nofollow">@${source[i+1]}</a></p>`
+                } else if (i >= 18) {
+                    img = `<https://www.rockabillyhairstyle.com/wp-content/uploads/${data[0]}/${image[i]}.jpg" alt="${alts[i].replace(/[0-9]/, "").replace(/\./g, "").replace(/[0-9]/, "").replace(/ /, "")}" width="500" />
+                           <p style="font-size: 14px;">via <a href="${source[i].replace(/[0-9]/, "").replace(/\./, "").replace(/[0-9]/, "").replace(/ /, "")}" target="_blank" rel="nofollow">@${source[i+1]}</a></p>`;
+                }
+
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += title;
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += p1_text;
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += p2_text;
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += img;
+                document.body.innerHTML += `<br>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Image SRC</title>
+</head>
+
+<body>
+    <label><textarea id="img-area" cols="45" rows="15" placeholder="Image Names:
+Image name with '-'. One by one with missing 1 line, but without any spaces. For ex:
+1-grown-up-bedroom-with-pink-bed-CZrBl8kNld6
+
+2-bedroom-with-pinks-walls-and-bright-accents-CapfH_aAFHG
+...."></textarea></label>
+
+    <button id="btn" class="do_alts_btn">Do Image SRC</button>
+    <br>
+    <script>
+        document.getElementById("btn").onclick = function() {
+            var image = document.getElementById("img-area").value.split("\n");
+            var arrayLength = image.length;
+
+
+            function chunkArray(myArray, chunk_size) {
+                var index = 0;
+                var tempArray = [];
+
+                for (index = 0; index < arrayLength; index += 2) {
+                    myChunk = myArray.slice(index, index + 2);
+                    tempArray.push(myChunk);
+                }
+                return tempArray;
+            }
+            for (let i = 0; i < arrayLength; i = i + 2) {
+                if (i < 17) {
+                    src = `http://cm.therighthairstyles.com/wp-content/uploads/2021/12/${image[i]}.jpg`;
+                } else if (i >= 18) {
+                    src = `http://cm.therighthairstyles.com/wp-content/uploads/2021/12/${image[i]}.jpg`;
+                }
+                document.body.innerHTML += `<br>`;
+                document.body.innerText += src;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+.do_alts_btn {
+    color: black;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 1s;
+    background-color: transparent;
+}
+
+.do_alts_btn:hover,
+.choose_var:hover {
+    background-color: #a9305c;
+}
+
+.img {
+    height: 70vh;
+    width: fit-content;
+}
+
+h1 {
+    text-align: center;
+    color: #a9305c;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.choose_var {
+    color: black;
+    border: 1.4px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 1s;
+    background-color: transparent;
+    /* text-align: center; */
+    width: 10vw;
+    height: 20px;
+}
